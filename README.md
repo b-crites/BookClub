@@ -1,4 +1,4 @@
-# BookClub
+# The Book Worms
 ## User Story
 ### AS A Reader
 ### I Want to search for books
