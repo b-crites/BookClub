@@ -2,11 +2,31 @@
 <html>
     <head>
         <title>Story Finder</title>
-        <img src="images/Book.png" class="img-fluid" alt="...">
+       <!-- <img src="images/Book.png" class="img-fluid" alt="..."> -->
+       <link rel="stylesheet" href="./style.css">
         <script src="https://kit.fontawesome.com/35b2078bbb.js" crossorigin="anonymous"></script>
     </head>
 
          <header>
+          
+          <div>
+        <i class="fa-duotone fa-book-sparkles"></i>
+
+        <i class="fa-sharp fa-regular fa-book"></i>
+
+        <i class="fa-duotone fa-books"></i>
+       
+        <i class="fa-light fa-bookmark"></i>
+
+        <i class="fa-duotone fa-bookmark"></i>
+
+        <i class="fa-thin fa-book-open"></i>
+
+        <i class="fa-solid fa-book-open-cover"></i>
+
+        <i class="fa-sharp fa-solid fa-book-open-reader"></i>
+       </div>
+
             <h1>Find your next story!</h1>
             <form>
               <label for='Genres'>Genres</label>
@@ -25,22 +45,18 @@
          </header>
 
     <body>
-       <div>
-        <i class="fa-duotone fa-book-sparkles"></i>
+       
+       <section id="saved-container.">
+        <ul id="saved-tiles">
+          <li class="saved-card">Example Text</li>
+        </ul>
+       </section>
+       <section id="display-container">
+        <ul id="title-display">
+          <li class="display-card"> Example Text</li>
+        </ul>
+       </section>
 
-        <i class="fa-sharp fa-regular fa-book"></i>
-
-        <i class="fa-duotone fa-books"></i>
-
-        <i class="fa-light fa-bookmark"></i>
-
-        <i class="fa-duotone fa-bookmark"></i>
-
-        <i class="fa-thin fa-book-open"></i>
-
-        <i class="fa-solid fa-book-open-cover"></i>
-
-        <i class="fa-sharp fa-solid fa-book-open-reader"></i>
-       </div>
+       <script src="./script.js"></script>
     </body>
 </html>
