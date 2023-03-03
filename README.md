@@ -12,5 +12,5 @@
 ## Roles
 ### Elissa and Clayton - HTML
 ### Zachary and Brandon - CSS
-### Geoffrey - JS
+### Geoffrey - JS + Everyone
 ![image](https://user-images.githubusercontent.com/118697673/222636336-d841fcce-e445-44fd-aa62-5f719fd2f1ff.png)
