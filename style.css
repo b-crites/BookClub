@@ -1,0 +1,30 @@
+/* color vars to use*/
+:root {
+    --primary: tan;
+    --secondary: rgba(75,182,239,1);
+    --tertiary: rgba(49, 52, 61, 1);
+    --brown: #a0522d;
+    --tan: #d2b48c;
+    --white: #ffffff;
+}
+  
+  /*
+
+.header {
+display: flex;
+justify-content: center;
+background-color: --tan;
+}
+
+.search-btn {
+background-color: white
+}
+
+.search-btn:hover {
+opacity:75%;
+}
+
+
+
+
+  */
