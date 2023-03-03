@@ -14,6 +14,7 @@
 display: flex;
 justify-content: center;
 background-color: --tan;
+padding: 5px 10px 5px 10px;
 }
 
 .search-btn {
@@ -22,6 +23,31 @@ background-color: white
 
 .search-btn:hover {
 opacity:75%;
+}
+
+.body-container {
+display:flex;
+flex-wrap: wrap;
+}
+
+.saved-books {
+margin: 5px 5px 5px 5px;
+display: flex;
+justify-content: flex-start;
+max-width:25%;
+}
+
+.saved-books ul {
+flex: 0 0 20%;
+border-radius: 5px;
+
+}
+
+.list-items {
+max-width: 75%;
+justify-content: flex-end;
+
+flex: 0 0 77%;
 }
 
 
