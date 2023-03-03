@@ -13,4 +13,4 @@
 ### Elissa and Clayton - HTML
 ### Zachary and Brandon - CSS
 ### Geoffrey - JS
-![image](https://user-images.githubusercontent.com/118697673/222631012-211c76fc-7287-4435-bdd8-f9dcbc66a037.png)
+![image](https://user-images.githubusercontent.com/118697673/222636336-d841fcce-e445-44fd-aa62-5f719fd2f1ff.png)
