@@ -6,5 +6,7 @@
 ## ACCEPTANCE
 ###
 ## Roles
-###
+### Elissa and Clayton - HTML
+### Zachary and Brandon - CSS
+### Geoffrey - JS
 ![image](https://user-images.githubusercontent.com/118697673/222631012-211c76fc-7287-4435-bdd8-f9dcbc66a037.png)
