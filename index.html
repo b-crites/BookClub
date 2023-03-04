@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Story Finder</title>
-       <!-- <img src="images/Book.png" class="img-fluid" alt="..."> -->
-       <link rel="stylesheet" href="./style.css">
-        <script src="https://kit.fontawesome.com/35b2078bbb.js" crossorigin="anonymous"></script>
-    </head>
+  <head>
+    <title>Story Finder</title>
+    <!-- <img src="images/Book.png" class="img-fluid" alt="..."> -->
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/35b2078bbb.js" crossorigin="anonymous"></script>
+  </head>
 
-         <header>
-          
-          <div>
+  <body>
+    <header>
+      <!--div holding font awsome icons we can coppy and pase these where needed and then 
+      delete this when we are done 
+      some of the icons arent working so the sorce link might have to be updated -->
+      <div>
         <i class="fa-duotone fa-book-sparkles"></i>
-
         <i class="fa-sharp fa-regular fa-book"></i>
-
         <i class="fa-duotone fa-books"></i>
-       
         <i class="fa-light fa-bookmark"></i>
-
         <i class="fa-duotone fa-bookmark"></i>
-
         <i class="fa-thin fa-book-open"></i>
-
         <i class="fa-solid fa-book-open-cover"></i>
+        <i class="fa-sharp fa-solid fa-book-open-reader"></i> <!--only working one so far-->
+      </div>
 
-        <i class="fa-sharp fa-solid fa-book-open-reader"></i>
-       </div>
+      <h1>Find your next story!</h1>
 
-            <h1>Find your next story!</h1>
-            <form>
-              <label for='Genres'>Genres</label>
-                <input list="Genres">
-          <datalist id="Genres">
-            <option value="sci-fi">
-            <option value="Horror">
-            <option value="Romance">
-            <option value="Fantasy">
-            <option value="Young Adult">
-          </datalist>
-          <label for="Topic">Topic</label>
-          <input id="Topic" placeholder="Topic"></input>
-        </form>
-                 <button>Search</button>
-         </header>
+      <form>
+        <label for='Genres'>Genres</label>
+        <input list="Genres">
 
-    <body>
-       
-       <section id="saved-container.">
+        <datalist id="Genres">
+          <option value="sci-fi">
+          <option value="Horror">
+          <option value="Romance">
+          <option value="Fantasy">
+          <option value="Young Adult">
+          <option value="Fication">
+          <option value="Non-Fiction">
+          <option value="comics">
+          <option value="Manga">
+        </datalist>
+
+        <label for="Topic">Topic</label>
+        <input id="Topic" placeholder="Topic"></input>
+      </form>
+
+      <button>Search</button>
+    </header>
+
+    <main>
+     <!--this section is where the users saved books will be displayed (displayed in column on the left side of the page)-->
+      <section id="saved-container.">
         <ul id="saved-tiles">
           <li class="saved-card">Example Text</li>
         </ul>
-       </section>
-       <section id="display-container">
+      </section>
+
+      <!--this section is where the search results will be displayed (displayed on right side of site)-->
+      <section id="display-container">
         <ul id="title-display">
           <li class="display-card"> Example Text</li>
         </ul>
-       </section>
-
-       <script src="./script.js"></script>
-    </body>
+      </section> 
+    </main>
+    
+    <script src="./script.js"></script>
+  </body>
 </html>
