@@ -36,6 +36,7 @@ padding: 5px 10px 5px 10px;
 justify-content: space-evenly;
 flex-wrap:wrap;
 color: var(--textColor);
+border-radius: 8px;
 }
 
 header div {
@@ -45,13 +46,14 @@ header div {
 header h1 {
 background-color: var(--textBox);
 padding:10px;
+border-radius: 8px;
 
 }
 
 header form {
 background-color: var(--textBox);
 padding:10px;
- 
+border-radius:8px;
 }
 .savedItemsResults{
 display: flex;
