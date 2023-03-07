@@ -9,19 +9,49 @@
     --textColor: #ffe599;
     --textBox: #764500;
     --lightBox: rgba(241,235,156);
+/* <<<<<<< HEAD */
 }
-html{
+body{
   background-color: var(--secondary);
-  box-sizing: border-box;
 
 }
   
 
-.header {
+/* .header {
   display: flex;
   justify-content: center;
   background-color: var(tan);
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px 5px 10px; */
+/* =======
+} */
+
+body {
+  background-color: var(--secondary);
+}
+
+header {
+display: flex;
+background-color: var(--lightBox);
+padding: 5px 10px 5px 10px;
+justify-content: space-evenly;
+flex-wrap:wrap;
+color: var(--textColor);
+}
+
+header div {
+  display:none;
+}
+
+header h1 {
+background-color: var(--textBox);
+padding:10px;
+
+}
+
+header form {
+background-color: var(--textBox);
+padding:10px;
+ 
 }
 .savedItemsResults{
 display: flex;
@@ -60,13 +90,15 @@ color: var(--textColor);
 /*
 
 .search-btn {
-background-color: white
+background-color: var(--lightBox);
+
 }
 
 .search-btn:hover {
 opacity:75%;
 }
 
+/*
 .body-container {
 display:flex;
 flex-wrap: wrap;
