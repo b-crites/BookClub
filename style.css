@@ -9,7 +9,21 @@
     --textColor: #ffe599;
     --textBox: #764500;
     --lightBox: rgba(241,235,156);
+/* <<<<<<< HEAD */
 }
+body{
+  background-color: var(--secondary);
+
+}
+  
+
+/* .header {
+  display: flex;
+  justify-content: center;
+  background-color: var(tan);
+  padding: 5px 10px 5px 10px; */
+/* =======
+} */
 
 body {
   background-color: var(--secondary);
@@ -22,6 +36,7 @@ padding: 5px 10px 5px 10px;
 justify-content: space-evenly;
 flex-wrap:wrap;
 color: var(--textColor);
+border-radius: 8px;
 }
 
 header div {
@@ -31,13 +46,50 @@ header div {
 header h1 {
 background-color: var(--textBox);
 padding:10px;
+border-radius: 8px;
 
 }
 
 header form {
 background-color: var(--textBox);
 padding:10px;
+border-radius:8px;
 }
+.savedItemsResults{
+display: flex;
+width: 320px;
+height: 500px;
+border: 1px solid gray;
+background-color: var(--textBox);
+color: var(--textColor);
+
+
+}
+.savedItemsResultsPosition{
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+.searchedItemsResults{
+display: flex;
+height: 100px;
+width: 72%;
+background-color: var(--textBox);
+color: var(--textColor);
+
+}
+.searchedItemsResultsPosition{
+  position: relative;
+  left: 25%;
+  bottom: 482px;
+}
+
+.lightBackground{
+  background-color: var(--lightBox);
+  
+}
+
+/*
 
 .search-btn {
 background-color: var(--lightBox);

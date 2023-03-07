@@ -19,7 +19,7 @@
       <h1>Find your next story! <i class="fa-sharp fa-solid fa-book-open-reader"></i></h1>
 
       <form>
-        <input list="Genres" placeholder="Genres">
+        <input id="genreInput" list="Genres" placeholder="Genres">
 
         <datalist id="Genres">
           <option value="Science Fiction">
@@ -34,26 +34,32 @@
         </datalist>
 
         <input id="Topic" placeholder="Topic"></input>
-        <button class="search-btn">Search</button>
+        <button id="searchButton" class="search-btn">Search</button>
       </form>
-
-     
+      
+      <button>Search</button>
     </header>
 
     <main>
      <!--this section is where the users saved books will be displayed (displayed in column on the left side of the page)-->
-      <section id="saved-container.">
+     <div class="lightBackground"> 
+     <div class="savedItemsResults , savedItemsResultsPosition">
+     <section id="saved-container.">
         <ul id="saved-tiles">
           <li class="saved-card">Example Text</li>
         </ul>
       </section>
+    </div>
 
       <!--this section is where the search results will be displayed (displayed on right side of site)-->
+      <div class="searchedItemsResults , searchedItemsResultsPosition">
       <section id="display-container">
         <ul id="title-display">
           <li class="display-card"> Example Text</li>
         </ul>
       </section> 
+    </div>
+    </div>
     </main>
     
     <script src="./script.js"></script>
