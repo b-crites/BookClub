@@ -21,6 +21,7 @@ background-color: var(--lightBox);
 padding: 5px 10px 5px 10px;
 justify-content: space-evenly;
 flex-wrap:wrap;
+color: var(--textColor);
 }
 
 header div {
@@ -28,16 +29,14 @@ header div {
 }
 
 header h1 {
-min-width:25%;
 background-color: var(--textBox);
 padding:10px;
+
 }
 
 header form {
 background-color: var(--textBox);
-max-width:75%;
 padding:10px;
-
 }
 
 .search-btn {
