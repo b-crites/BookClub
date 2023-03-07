@@ -8,25 +8,48 @@
     --white: #ffffff;
     --textColor: #ffe599;
     --textBox: #764500;
+    --lightBox: rgba(241,235,156);
 }
-  
-  /*
 
-.header {
+body {
+  background-color: var(--secondary);
+}
+
+header {
 display: flex;
-justify-content: center;
-background-color: --tan;
+background-color: var(--lightBox);
 padding: 5px 10px 5px 10px;
+justify-content: space-evenly;
+flex-wrap:wrap;
+}
+
+header div {
+  display:none;
+}
+
+header h1 {
+min-width:25%;
+background-color: var(--textBox);
+padding:10px;
+}
+
+header form {
+background-color: var(--textBox);
+max-width:75%;
+padding:10px;
+
 }
 
 .search-btn {
-background-color: white
+background-color: var(--lightBox);
+
 }
 
 .search-btn:hover {
 opacity:75%;
 }
 
+/*
 .body-container {
 display:flex;
 flex-wrap: wrap;
