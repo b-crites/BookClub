@@ -82,6 +82,7 @@ header form {
 }
 
 .searchedItemsResults {
+  display:flex;
   flex-wrap:wrap;
   flex: 1 1 auto;
   min-width: 65%;
@@ -89,8 +90,4 @@ header form {
   background-color: var(--textBox);
   color: var(--textColor);
 
-}
-
-.searchedItemsResultsPosition{
-  display: flex;
 }
