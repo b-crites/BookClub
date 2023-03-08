@@ -15,15 +15,6 @@ body{
   background-color: var(--secondary);
 
 }
-  
-
-/* .header {
-  display: flex;
-  justify-content: center;
-  background-color: var(tan);
-  padding: 5px 10px 5px 10px; */
-/* =======
-} */
 
 body {
   background-color: var(--secondary);
@@ -84,10 +75,10 @@ color: var(--textColor);
   bottom: 482px;
 }
 
-.lightBackground{
+.savedItemsResults {
   background-color: var(--lightBox);
-  
 }
+
 
 /*
 
@@ -125,8 +116,5 @@ justify-content: flex-end;
 
 flex: 0 0 77%;
 }
-
-
-
 
   */
