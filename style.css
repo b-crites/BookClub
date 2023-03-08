@@ -9,8 +9,8 @@
     --textColor: #ffe599;
     --textBox: #764500;
     --lightBox: rgba(241,235,156);
-/* <<<<<<< HEAD */
 }
+
 body{
   background-color: var(--secondary);
 
@@ -21,13 +21,13 @@ body {
 }
 
 header {
-display: flex;
-background-color: var(--lightBox);
-padding: 5px 10px 5px 10px;
-justify-content: space-evenly;
-flex-wrap:wrap;
-color: var(--textColor);
-border-radius: 8px;
+  display: flex;
+  background-color: var(--lightBox);
+  padding: 5px 10px 5px 10px;
+  justify-content: space-evenly;
+  flex-wrap:wrap;
+  color: var(--textColor);
+  border-radius: 8px;
 }
 
 header div {
@@ -35,86 +35,65 @@ header div {
 }
 
 header h1 {
-background-color: var(--textBox);
-padding:10px;
-border-radius: 8px;
-
+  background-color: var(--textBox);
+  padding:10px;
+  border-radius: 8px;
+  max-width: 85%;
 }
 
 header form {
-background-color: var(--textBox);
-padding:10px;
-border-radius:8px;
-}
-.savedItemsResults{
-display: flex;
-width: 320px;
-height: 500px;
-border: 1px solid gray;
-background-color: var(--textBox);
-color: var(--textColor);
-
-
-}
-.savedItemsResultsPosition{
-  position: relative;
-  top: 20px;
-  left: 20px;
-}
-.searchedItemsResults{
-display: flex;
-height: 100px;
-width: 72%;
-background-color: var(--textBox);
-color: var(--textColor);
-
-}
-.searchedItemsResultsPosition{
-  position: relative;
-  left: 25%;
-  bottom: 482px;
+  background-color: var(--textBox);
+  padding:10px;
+  border-radius:8px;
 }
 
-.savedItemsResults {
+.search-btn {
   background-color: var(--lightBox);
 }
 
-
-/*
-
-.search-btn {
-background-color: var(--lightBox);
-
-}
-
 .search-btn:hover {
-opacity:75%;
+  opacity:75%;
 }
 
-/*
-.body-container {
-display:flex;
-flex-wrap: wrap;
+.container {
+  display:flex;
+  background-color: var(--lightBox);
+  margin-top: 10px;
+  border-radius:8px;
+  padding: 10px;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+  min-height: 350px;
+  max-height:75%;
 }
 
-.saved-books {
-margin: 5px 5px 5px 5px;
-display: flex;
-justify-content: flex-start;
-max-width:25%;
+.savedItemsResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 25%;
+  max-width: 33%;
+  border: 1px solid gray;
+  background-color: var(--textBox);
+  color: var(--textColor);
+  margin-right: 7px;
 }
 
-.saved-books ul {
-flex: 0 0 20%;
-border-radius: 5px;
+.saved-container ul {
+  list-style-type: none;
+  margin-left: -37px;
+}
+
+.searchedItemsResults {
+  flex-wrap:wrap;
+  flex: 1 1 auto;
+  min-width: 65%;
+  max-width: 75%;
+  background-color: var(--textBox);
+  color: var(--textColor);
 
 }
 
-.list-items {
-max-width: 75%;
-justify-content: flex-end;
-
-flex: 0 0 77%;
+.searchedItemsResultsPosition{
+  display: flex;
 }
-
-  */
