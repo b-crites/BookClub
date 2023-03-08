@@ -17,10 +17,6 @@ body{
 
 }
 
-body {
-  background-color: var(--secondary);
-}
-
 header {
   display: flex;
   background-color: var(--lightBox);
