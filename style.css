@@ -75,10 +75,10 @@ color: var(--textColor);
   bottom: 482px;
 }
 
-.lightBackground{
+.savedItemsResults {
   background-color: var(--lightBox);
-  
 }
+
 
 /*
 
