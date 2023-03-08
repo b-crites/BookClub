@@ -78,12 +78,16 @@ border-radius: 8px;
 }
 
 .savedItemsResults {
-  background-color: var(--lightBox);
+  background-color: var(--textBox);
   border-radius: 8px;
 }
 .lightBackgroundPosition{
+  
   position: relative;
   top: 25px;
+}
+.lightBackground{
+  background-color: var(--lightBox);
 }
 
 
