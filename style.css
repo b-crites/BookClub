@@ -53,6 +53,7 @@ height: 500px;
 border: 1px solid gray;
 background-color: var(--textBox);
 color: var(--textColor);
+border-radius: 8px;
 
 
 }
@@ -67,6 +68,7 @@ height: 100px;
 width: 72%;
 background-color: var(--textBox);
 color: var(--textColor);
+border-radius: 8px;
 
 }
 .searchedItemsResultsPosition{
@@ -76,6 +78,15 @@ color: var(--textColor);
 }
 
 .savedItemsResults {
+  background-color: var(--textBox);
+  border-radius: 8px;
+}
+.lightBackgroundPosition{
+  
+  position: relative;
+  top: 25px;
+}
+.lightBackground{
   background-color: var(--lightBox);
 }
 
