@@ -1,38 +1,49 @@
 console.log('Link test')
-var searchButton= document.getElementById('searchButton')
-
-var openLibraryURL='https://openlibrary.org/subjects/'
-var marvelURL= 'https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf'
-
-function getApi(event){
+var searchButton = document.getElementById('searchButton')
+var openLibraryURL = 'https://openlibrary.org'
+var worksArray= []
+var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf"
+function getApi(event) {
     event.preventDefault()
-    var genreInput= document.getElementById('genreInput').value.toLowerCase().split(' ').join('+')
+    var genreInput = document.getElementById('genreInput').value.toLowerCase().split(' ').join('+')
     console.log(genreInput)
-if(genreInput === 'marvel'){
+    if(genreInput === 'marvel'){
     fetch(marvelURL, {
-         mode: 'no-cors',
-         headers: {
-            "Content-Type": "application/json",
-         }
+        // method: 'no-cors'
     })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data)
+        })
+    }  
+
+else{
+fetch(openLibraryURL + "/subjects/" + genreInput + '.json'+'?per_page=10', {
+    // method: 'no-cors'
+})
     .then(function (response) {
         return response.json();
     })
-    .then(function(data){
+    .then(function (data) {
         console.log(data)
+        for (var i = 0; i < data.works.length; i++) {
+           worksArray.push(data.works[i])
+        }
     })
-
-}    
-    else {
-fetch(openLibraryURL+genreInput+'.json' , {
-    // method: 'no-cors'
-})
-.then(function (response) {
-    return response.json();
-})
-.then(function(data){
-    console.log(data)
-})
-    }
 }
-searchButton.addEventListener('click',getApi)
+}
+searchButton.addEventListener('click', getApi)
+
+//A function that picks and displays the selected info in our ul element "title-display"
+//List items need a card style display, Title, Description, and save button element (images if possible)
+function searchDisplay()
+
+//Write a function that saves the name and a link to favorited titles
+//The link should connect to titles page on either open library or the Marvel website
+function saveTitle()
+
+//Write a function that displays the save titles and links in our display section "saved-titles"
+//The link should connect to titles page on either open library or the Marvel website
+function saveDisplay()
