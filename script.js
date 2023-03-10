@@ -1,8 +1,9 @@
-console.log('Link test')
-var searchButton = document.getElementById('searchButton')
-var openLibraryURL = 'https://openlibrary.org'
-var worksArray = []
-var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf"
+console.log('Link test');
+var savedTitles = document.getElementById("saved-titles");
+var searchButton = document.getElementById('searchButton');
+var openLibraryURL = 'https://openlibrary.org';
+var worksArray = [];
+var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf";
 function getApi(event) {
     event.preventDefault()
     worksArray= []
@@ -60,8 +61,12 @@ function searchDisplay() {
 
 //Write a function that saves the name and a link to favorited titles
 //The link should connect to titles page on either open library or the Marvel website
-function saveTitle() { 
+function saveTitle(event) {
+    var localSaved = localStorage.getItem(JSON.parse("savedItems"));
+    var title = 
     
+    // localSaved.concat(clicked);
+    localStorage.setIItem("savedItems", JSON.stringify(localSaved));
 }
 
 //Write a function that displays the save titles and links in our display section "saved-titles"

@@ -82,6 +82,12 @@ header form {
   margin-left: -37px;
 }
 
+.saved-card {
+  background-color: var(--secondary);
+  padding: 5px;
+  border-radius: 2px;
+}
+
 .searchedItemsResults {
   display:flex;
   flex-wrap:wrap;
@@ -97,4 +103,5 @@ header form {
   background-color: var(--secondary);
   padding: 5px;
   border-radius: 2px;
+  margin: 5px;
 }
