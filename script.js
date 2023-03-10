@@ -63,9 +63,10 @@ function searchDisplay() {
 //The link should connect to titles page on either open library or the Marvel website
 function saveTitle(event) {
     var localSaved = localStorage.getItem(JSON.parse("savedItems"));
-    var title = 
-    
-    // localSaved.concat(clicked);
+    var title = event.target.textContent;
+    var link = "" // the clicked on items link (href attribute)?
+    localSaved.concat(title);
+    localSaved.concat(link);
     localStorage.setIItem("savedItems", JSON.stringify(localSaved));
 }
 
