@@ -1,5 +1,6 @@
 console.log('Link test')
 var displayCardEl = document.getElementById('title-display')
+var savedTitlesEl = document.getElementById('saved-titles')
 var searchButton = document.getElementById('searchButton')
 var openLibraryURL = 'https://openlibrary.org'
 var worksArray = []
@@ -90,15 +91,34 @@ function searchDisplay(data) {
 
 //Write a function that saves the name and a link to favorited titles
 //The link should connect to titles page on either open library or the Marvel website
-function saveTitle() {
-
+function saveTitle(event) {
+    var localSaved = localStorage.getItem(JSON.parse("savedItems"));
+    var title = event.target.textContent;
+    var link = "" // the clicked on items link (href attribute)?
+    localSaved.concat(title);
+    localSaved.concat(link);
+    localStorage.setIItem("savedItems", JSON.stringify(localSaved));
 }
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
 //The link should connect to titles page on either open library or the Marvel website
 function saveDisplay() {
 
-}
+    var savedSearches = JSON.parse(localStorage.getItem('local storage neame from above'));
+    console.log(savedSearches);
+
+    savedSearches.forEach(createItem)
+
+    function createItem() {
+        var savedItem = document.createElement('li');
+        savedItem.textContent = savedSearches //want to get the title from the array object
+        savedItem.setAttribute('href', savedSearches) //want to get the link from the array object
+
+        savedTitlesEl.append(savedItem);
+
+    }
+
+ }
 
 
 
