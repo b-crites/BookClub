@@ -61,13 +61,13 @@ function searchDisplay() {
 //Write a function that saves the name and a link to favorited titles
 //The link should connect to titles page on either open library or the Marvel website
 function saveTitle() { 
-
+    
 }
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
 //The link should connect to titles page on either open library or the Marvel website
 function saveDisplay() {
-    
+
  }
 
 
