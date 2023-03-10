@@ -111,14 +111,14 @@ function saveDisplay() {
 
     function createItem() {
         var savedItem = document.createElement('li');
-        savedItem.textContent = savedSearches; //want to get the title from the array object
-        savedItem.setAttribute('href', savedSearches); //want to get the link from the array object
+        savedItem.textContent = savedSearches.title; //want to get the title from the array object
+        savedItem.setAttribute('href', savedSearches.link); //want to get the link from the array object
 
         savedTitlesEl.append(savedItem);
 
     }
 
- }
+}
 
-
+saveDisplay();
 
