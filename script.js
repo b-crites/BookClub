@@ -80,12 +80,14 @@ function searchDisplay(data) {
     displayBody.classList.add('display-body');
     displayBody.innerHTML = '<br/>' + 'Author:' + authors[0].name
 
-
+    var saveButton = document.createElement('button')
+    saveButton.classList.add('save-button')
+    saveButton.innerText= 'Save'
 
     var displayTitle = document.createElement('h2')
     displayTitle.innerHTML = book.title
     anchorEl.append(bookImage)
-    displayCard.append(displayTitle, displayBody, anchorEl )
+    displayCard.append(displayTitle, displayBody, anchorEl, saveButton )
     displayCardEl.append(displayCard)
 }
 
