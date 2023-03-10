@@ -7,6 +7,7 @@ var worksArray = []
 var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf"
 function getApi(event) {
     event.preventDefault()
+    clearDisplay()
     worksArray = []
     var genreInput = document.getElementById('genreInput').value.toLowerCase().split(' ').join('_')
     console.log(genreInput)
@@ -123,5 +124,8 @@ function saveDisplay() {
 
  }
 
-
+//Write a function that clears the Search Display before each search
+function clearDisplay(){
+    
+}
 
