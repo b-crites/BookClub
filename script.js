@@ -73,15 +73,15 @@ function saveTitle(event) {
 //The link should connect to titles page on either open library or the Marvel website
 function saveDisplay() {
 
-    var savedSearches = JSON.parse(localStorage.getItem('local storage neame from above'));
+    var savedSearches = JSON.parse(localStorage.getItem('savedItems'));
     console.log(savedSearches);
 
-    savedSearches.forEach(createItem)
+    savedSearches.forEach(createItem);
 
     function createItem() {
         var savedItem = document.createElement('li');
-        savedItem.textContent = savedSearches //want to get the title from the array object
-        savedItem.setAttribute('href', savedSearches) //want to get the link from the array object
+        savedItem.textContent = savedSearches; //want to get the title from the array object
+        savedItem.setAttribute('href', savedSearches); //want to get the link from the array object
 
         savedTitlesEl.append(savedItem);
 
