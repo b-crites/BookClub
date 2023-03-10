@@ -3,7 +3,7 @@ var searchButton = document.getElementById('searchButton')
 var openLibraryURL = 'https://openlibrary.org'
 var worksArray = []
 var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf"
-function getApi(event) {dult
+function getApi(event) {
     event.preventDefault()
     worksArray= []
     var genreInput = document.getElementById('genreInput').value.toLowerCase().split(' ').join('_')
