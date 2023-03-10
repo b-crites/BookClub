@@ -100,6 +100,7 @@ function saveTitle(event) {
     localSaved.concat(title);
     localSaved.concat(link);
     localStorage.setIItem("savedItems", JSON.stringify(localSaved));
+    
 }
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
