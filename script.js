@@ -54,12 +54,21 @@ searchButton.addEventListener('click', getApi)
 
 //A function that picks and displays the selected info in our ul element "title-display"
 //List items need a card style display, Title, Description, and save button element (images if possible)
-function searchDisplay() { }
+function searchDisplay() { 
+
+}
 
 //Write a function that saves the name and a link to favorited titles
 //The link should connect to titles page on either open library or the Marvel website
-function saveTitle() { }
+function saveTitle() { 
+
+}
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
 //The link should connect to titles page on either open library or the Marvel website
-function saveDisplay() { }
+function saveDisplay() {
+    
+ }
+
+
+
