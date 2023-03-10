@@ -74,6 +74,7 @@ header form {
   background-color: var(--textBox);
   color: var(--textColor);
   margin-right: 7px;
+  border-radius: 5px;
 }
 
 .saved-container ul {
@@ -89,5 +90,11 @@ header form {
   max-width: 75%;
   background-color: var(--textBox);
   color: var(--textColor);
+  border-radius: 5px;
+}
 
+.display-card {
+  background-color: var(--secondary);
+  padding: 5px;
+  border-radius: 2px;
 }
