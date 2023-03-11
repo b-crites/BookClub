@@ -7,6 +7,7 @@ var worksArray = []
 var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf"
 function getApi(event) {
     event.preventDefault()
+    clearDisplay()
     worksArray = []
     var genreInput = document.getElementById('genreInput').value.toLowerCase().split(' ').join('_')
     console.log(genreInput)
@@ -18,7 +19,9 @@ function getApi(event) {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data)
+                
+                console.log(data.data.results)
+                marvelDisplay(data)
             })
     }
 
@@ -80,13 +83,55 @@ function searchDisplay(data) {
     displayBody.classList.add('display-body');
     displayBody.innerHTML = '<br/>' + 'Author:' + authors[0].name
 
-
+    var saveButton = document.createElement('button')
+    saveButton.classList.add('save-button')
+    saveButton.innerText= 'Save'
 
     var displayTitle = document.createElement('h2')
     displayTitle.innerHTML = book.title
     anchorEl.append(bookImage)
-    displayCard.append(displayTitle, displayBody, anchorEl )
+    displayCard.append(displayTitle, displayBody, anchorEl, saveButton )
     displayCardEl.append(displayCard)
+}
+function marvelDisplay(data){
+var comics= data.data.results
+for(i=0;i<10;++i) {
+    
+var creators= comics[i].creators.items[0].name
+
+
+var comicTitles = comics[i].title
+
+
+var anchorEl =document.createElement('a')
+anchorEl.setAttribute('href',comics[i].urls[0].url)
+console.log(comics[i].urls[0].url)
+
+var comicImages=comics[i].thumbnail.path +'.jpg'
+
+
+var displayCard = document.createElement('li');
+displayCard.classList.add('display-card');
+
+var displayTitle = document.createElement('h2')
+displayTitle.innerHTML = comicTitles
+
+var bookImage = document.createElement('img')
+    bookImage.classList.add('book-img')
+    bookImage.setAttribute('src', comicImages)
+
+var displayBody = document.createElement('div');
+displayBody.classList.add('display-body');
+displayBody.innerHTML = '<br/>' + 'Creator:' + creators
+
+var saveButton = document.createElement('button')
+    saveButton.classList.add('save-button')
+    saveButton.innerText= 'Save'
+anchorEl.append(bookImage)
+displayCard.append(displayTitle, anchorEl , displayBody, saveButton )
+displayCardEl.append(displayCard)
+}
+
 }
 
 //Write a function that saves the name and a link to favorited titles
@@ -98,6 +143,7 @@ function saveTitle(event) {
     localSaved.concat(title);
     localSaved.concat(link);
     localStorage.setIItem("savedItems", JSON.stringify(localSaved));
+    
 }
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
@@ -120,5 +166,10 @@ function saveDisplay() {
 
 }
 
-saveDisplay();
+//Write a function that clears the Search Display before each search
+function clearDisplay(){
+    while (displayCardEl.firstChild){
+        displayCardEl.removeChild (displayCardEl.firstChild)
+    }
+}
 
