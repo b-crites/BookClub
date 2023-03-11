@@ -168,6 +168,8 @@ function saveDisplay() {
 
 //Write a function that clears the Search Display before each search
 function clearDisplay(){
-    
+    while (displayCardEl.firstChild){
+        displayCardEl.removeChild (displayCardEl.firstChild)
+    }
 }
 
