@@ -12,9 +12,10 @@ function getApi(event) {
     var genreInput = document.getElementById('genreInput').value.toLowerCase().split(' ').join('_')
     console.log(genreInput)
     if (genreInput === 'marvel') {
-        fetch(marvelURL, {
+        fetch(marvelURL//,{
             // method: 'no-cors'
-        })
+        //}
+        )
             .then(function (response) {
                 return response.json();
             })
@@ -93,9 +94,14 @@ function searchDisplay(data) {
     displayCard.append(displayTitle, displayBody, anchorEl, saveButton )
     displayCardEl.append(displayCard)
     
-    saveButton.addEventListener('click', console.log('clicked'))
 
-    saveButton.addEventListener('click', saveTitle(data))
+    saveButton.addEventListener('click', e=> {
+        console.log(e)
+        saveTitle(data)
+        console.log(data)
+    });
+
+    //saveButton.addEventListener('click', saveTitle(data))
 }
 
 function marvelDisplay(data){
@@ -136,9 +142,11 @@ function marvelDisplay(data){
         displayCard.append(displayTitle, anchorEl , displayBody, saveButton )
         displayCardEl.append(displayCard)
 
-        saveButton.addEventListener('click', console.log('clicked'))
-
-        saveButton.addEventListener('click', saveTitle(marvelData))
+        saveButton.addEventListener('click', e=> {
+            console.log(e)
+            saveTitle(data)
+            console.log(data)
+        });
     }
 
 };
