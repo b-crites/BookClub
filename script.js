@@ -92,47 +92,56 @@ function searchDisplay(data) {
     anchorEl.append(bookImage)
     displayCard.append(displayTitle, displayBody, anchorEl, saveButton )
     displayCardEl.append(displayCard)
-}
-function marvelDisplay(data){
-var comics= data.data.results
-for(i=0;i<10;++i) {
     
-var creators= comics[i].creators.items[0].name
+    saveButton.addEventListener('click', console.log('clicked'))
 
-
-var comicTitles = comics[i].title
-
-
-var anchorEl =document.createElement('a')
-anchorEl.setAttribute('href',comics[i].urls[0].url)
-console.log(comics[i].urls[0].url)
-
-var comicImages=comics[i].thumbnail.path +'.jpg'
-
-
-var displayCard = document.createElement('li');
-displayCard.classList.add('display-card');
-
-var displayTitle = document.createElement('h2')
-displayTitle.innerHTML = comicTitles
-
-var bookImage = document.createElement('img')
-    bookImage.classList.add('book-img')
-    bookImage.setAttribute('src', comicImages)
-
-var displayBody = document.createElement('div');
-displayBody.classList.add('display-body');
-displayBody.innerHTML = '<br/>' + 'Creator:' + creators
-
-var saveButton = document.createElement('button')
-    saveButton.classList.add('save-button')
-    saveButton.innerText= 'Save'
-anchorEl.append(bookImage)
-displayCard.append(displayTitle, anchorEl , displayBody, saveButton )
-displayCardEl.append(displayCard)
+    saveButton.addEventListener('click', saveTitle(data))
 }
 
-}
+function marvelDisplay(data){
+    var comics= data.data.results
+    for(i=0;i<10;++i) {
+        
+        var creators= comics[i].creators.items[0].name
+
+
+        var comicTitles = comics[i].title
+
+
+        var anchorEl =document.createElement('a')
+        anchorEl.setAttribute('href',comics[i].urls[0].url)
+        console.log(comics[i].urls[0].url)
+
+        var comicImages=comics[i].thumbnail.path +'.jpg'
+
+
+        var displayCard = document.createElement('li');
+        displayCard.classList.add('display-card');
+
+        var displayTitle = document.createElement('h2')
+        displayTitle.innerHTML = comicTitles
+
+        var bookImage = document.createElement('img')
+            bookImage.classList.add('book-img')
+            bookImage.setAttribute('src', comicImages)
+
+        var displayBody = document.createElement('div');
+        displayBody.classList.add('display-body');
+        displayBody.innerHTML = '<br/>' + 'Creator:' + creators
+
+        var saveButton = document.createElement('button')
+            saveButton.classList.add('save-button')
+            saveButton.innerText= 'Save'
+        anchorEl.append(bookImage)
+        displayCard.append(displayTitle, anchorEl , displayBody, saveButton )
+        displayCardEl.append(displayCard)
+
+        saveButton.addEventListener('click', console.log('clicked'))
+
+        saveButton.addEventListener('click', saveTitle(marvelData))
+    }
+
+};
 
 //Write a function that saves the name and a link to favorited titles
 //The link should connect to titles page on either open library or the Marvel website
@@ -144,7 +153,7 @@ function saveTitle(event) {
     localSaved.concat(link);
     localStorage.setIItem("savedItems", JSON.stringify(localSaved));
     
-}
+};
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
 //The link should connect to titles page on either open library or the Marvel website
@@ -164,12 +173,12 @@ function saveDisplay() {
 
     }
 
-}
+};
 
 //Write a function that clears the Search Display before each search
 function clearDisplay(){
     while (displayCardEl.firstChild){
         displayCardEl.removeChild (displayCardEl.firstChild)
     }
-}
+};
 
