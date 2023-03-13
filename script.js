@@ -4,6 +4,7 @@ var savedTitlesEl = document.getElementById('saved-titles')
 var searchButton = document.getElementById('searchButton')
 var openLibraryURL = 'https://openlibrary.org'
 var worksArray = []
+var saveButton = ""
 var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf"
 function getApi(event) {
     event.preventDefault()
@@ -38,7 +39,7 @@ function getApi(event) {
                 for (var i = 0; i < data.works.length; i++) {
                     worksArray.push(data.works[i])
                 }
-                console.log(worksArray)
+                //console.log(worksArray)
             })
             .then(function () {
                 for (var i = 0; i < worksArray.length; i++) {
@@ -50,7 +51,7 @@ function getApi(event) {
                             return response.json();
                         })
                         .then(function (data) {
-                            console.log(data)
+                            //console.log(data)
                             searchDisplay(data)
                         })
 
@@ -60,92 +61,94 @@ function getApi(event) {
     }
 
 }
-searchButton.addEventListener('click', getApi)
+searchButton.addEventListener('click', getApi);
 
 //A function that picks and displays the selected info in our ul element "title-display"
 //List items need a card style display, Title, Description, and save button element (images if possible)
 function searchDisplay(data) {
-    var book = Object.values(data)[0]
-    var authors = book.authors
-    var image = book.cover
+    var book = Object.values(data)[0];
+    var authors = book.authors;
+    var image = book.cover;
 
-    console.log(authors[0].name)
-    var anchorEl =document.createElement('a')
-    anchorEl.setAttribute('href',book.url)
+    console.log(authors[0].name);
+    var anchorEl =document.createElement('a');
+    anchorEl.setAttribute('href',book.url);
 
-    var bookImage = document.createElement('img')
-    bookImage.classList.add('book-img')
-    bookImage.setAttribute('src', image.medium)
+    var bookImage = document.createElement('img');
+    bookImage.classList.add('book-img');
+    bookImage.setAttribute('src', image.medium);
 
     var displayCard = document.createElement('li');
     displayCard.classList.add('display-card');
 
     var displayBody = document.createElement('div');
     displayBody.classList.add('display-body');
-    displayBody.innerHTML = '<br/>' + 'Author:' + authors[0].name
+    displayBody.innerHTML = '<br/>' + 'Author:' + authors[0].name;
 
-    var saveButton = document.createElement('button')
-    saveButton.classList.add('save-button')
-    saveButton.innerText= 'Save'
+    saveButton = document.createElement('button');
+    saveButton.classList.add('save-button');
+    saveButton.innerText= 'Save';
+    saveButton.setAttribute("url", book.url);
+    saveButton.setAttribute("title", book.title);
 
-    var displayTitle = document.createElement('h2')
-    displayTitle.innerHTML = book.title
-    anchorEl.append(bookImage)
-    displayCard.append(displayTitle, displayBody, anchorEl, saveButton )
-    displayCardEl.append(displayCard)
+    var displayTitle = document.createElement('h2');
+    displayTitle.innerHTML = book.title;
+    anchorEl.append(bookImage);
+    displayCard.append(displayTitle, displayBody, anchorEl, saveButton );
+    displayCardEl.append(displayCard);
     
 
     saveButton.addEventListener('click', e=> {
-        console.log(e)
-        saveTitle(data)
-        console.log(data)
+        //console.log(e)
+        saveTitle(e);
+        //console.log(data)
     });
+    
 
-    //saveButton.addEventListener('click', saveTitle(data))
 }
 
 function marvelDisplay(data){
-    var comics= data.data.results
+    var comics= data.data.results;
     for(i=0;i<10;++i) {
         
-        var creators= comics[i].creators.items[0].name
+        var creators= comics[i].creators.items[0].name;
 
 
-        var comicTitles = comics[i].title
+        var comicTitles = comics[i].title;
 
 
-        var anchorEl =document.createElement('a')
-        anchorEl.setAttribute('href',comics[i].urls[0].url)
-        console.log(comics[i].urls[0].url)
+        var anchorEl = document.createElement('a');
+        anchorEl.setAttribute('href',comics[i].urls[0].url);
+        console.log(comics[i].urls[0].url);
 
-        var comicImages=comics[i].thumbnail.path +'.jpg'
+        var comicImages=comics[i].thumbnail.path +'.jpg';
 
 
         var displayCard = document.createElement('li');
         displayCard.classList.add('display-card');
 
-        var displayTitle = document.createElement('h2')
-        displayTitle.innerHTML = comicTitles
+        var displayTitle = document.createElement('h2');
+        displayTitle.innerHTML = comicTitles;
 
-        var bookImage = document.createElement('img')
-            bookImage.classList.add('book-img')
-            bookImage.setAttribute('src', comicImages)
+        var bookImage = document.createElement('img');
+            bookImage.classList.add('book-img');
+            bookImage.setAttribute('src', comicImages);
 
         var displayBody = document.createElement('div');
         displayBody.classList.add('display-body');
-        displayBody.innerHTML = '<br/>' + 'Creator:' + creators
+        displayBody.innerHTML = '<br/>' + 'Creator:' + creators;
 
-        var saveButton = document.createElement('button')
-            saveButton.classList.add('save-button')
-            saveButton.innerText= 'Save'
-        anchorEl.append(bookImage)
-        displayCard.append(displayTitle, anchorEl , displayBody, saveButton )
-        displayCardEl.append(displayCard)
+        var saveButton = document.createElement('button');
+            saveButton.classList.add('save-button');
+            saveButton.innerText= 'Save';
+        anchorEl.append(bookImage);
+        displayCard.append(displayTitle, anchorEl , displayBody, saveButton );
+        displayCardEl.append(displayCard);
 
         saveButton.addEventListener('click', e=> {
-            console.log(e)
-            saveTitle(data)
-            console.log(data)
+            console.log(e);
+            saveTitle(data);
+            console.log(data);
         });
     }
 
@@ -153,13 +156,13 @@ function marvelDisplay(data){
 
 //Write a function that saves the name and a link to favorited titles
 //The link should connect to titles page on either open library or the Marvel website
-function saveTitle(event) {
-    var localSaved = localStorage.getItem(JSON.parse("savedItems"));
-    var title = event.target.textContent;
-    var link = "" // the clicked on items link (href attribute)?
-    localSaved.concat(title);
-    localSaved.concat(link);
-    localStorage.setIItem("savedItems", JSON.stringify(localSaved));
+function saveTitle(e) { //for titles not marvel
+    var a = e.target;
+    var title = a.getAttribute("title");
+    var url = a.getAttribute("url");
+    console.log(url);
+    console.log(title);
+    //localStorage.setIItem("savedItems", JSON.stringify(localSaved));
     
 };
 
