@@ -164,7 +164,7 @@ function saveMarvelTitle(e) {
 };
 
 function saveMarvelDisplay() {
-    clearSaveDisplay();
+    //clearSaveDisplay();
     var savedMarvel = JSON.parse(localStorage.getItem("savedMarvel"));
 
     if(!savedMarvel) {
@@ -249,8 +249,8 @@ function saveDisplay() {
 };
 
 function clearSaveDisplay() {
-    while (savedTitlesEl.secondChild){
-        savedTitlesEl.removeChild (savedTitlesEl.secondChild)
+    while (savedTitlesEl.firstChild){
+        savedTitlesEl.removeChild (savedTitlesEl.firstChild)
     };
 };
 
