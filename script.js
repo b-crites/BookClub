@@ -1,5 +1,5 @@
 console.log('Link test');
-
+// localStorage.clear();
 var displayCardEl = document.getElementById('title-display');
 var savedTitlesEl = document.getElementById('saved-titles');
 var searchButton = document.getElementById('searchButton');
@@ -149,7 +149,7 @@ function marvelDisplay(data){
         saveButton.addEventListener('click', e=> {
             console.log(e);
             saveTitle(e);
-            saveDisplay();
+            // saveDisplay();
             //console.log(data);
         });
     }
@@ -162,66 +162,54 @@ function saveTitle(e) { //for titles not marvel
     var a = e.target;
     var title = a.getAttribute("title");
     var url = a.getAttribute("url");
-    console.log(url);
-    console.log(title);
-    
-    var savedData = {};
-    savedData = JSON.parse(localStorage.getItem("savedData"));
-    console.log(savedData);
+    // console.log(url);
+    // console.log(title);
+    var savedData = JSON.parse(localStorage.getItem("savedData"));
+    if(!savedData) {
+        var saveData = {};
+        saveData[0] = title + ", ";
+        // console.log(saveData[0]);
+        saveData[1] = url + ", ";
+        // console.log(saveData[1]);
+        // console.log(saveData);
+        localStorage.setItem("savedData", JSON.stringify(saveData));
 
-    var savedData2 = savedData.split(", ");
-    console.log(savedData2);
-
-    var savedDataTitle = savedData2[0];
-    console.log(savedDataTitle);
-    var savedDataURL = savedData2[1];
-    console.log(savedDataURL);
-    
-    if (savedData === null) {
-        // savedItems = title + ", " + url + ", ";
-        savedDataTitle = title + ", ";
-        savedDataURL = url + ", ";
-        console.log(savedData2);
-
-        localStorage.setItem("savedData", JSON.stringify(savedData2));
-        console.log(savedData2);
-
-
-        // console.log(savedItems);
-        // localStorage.setItem("savedItems", JSON.stringify(savedItems));
-        // console.log(savedItems);
-    } 
+    }
     else {
-        savedDataTitle = savedDataTitle + title + ", ";
-        savedDataURL = savedDataURL + url + ", ";
-        // savedItems = savedItems + title + ", " + url + ", ";
-        console.log(savedData2);
+        savedData[0] = savedData[0] + title + ", ";
+        savedData[1] = savedData[1] + url + ", ";
 
-        localStorage.setItem("savedData", JSON.stringify(savedData2));
-        console.log(savedData2);
-
-        // console.log(savedItems);
-        // localStorage.setItem("savedItems", JSON.stringify(savedItems));
-        // console.log(savedItems);
-        // localStorage.clear();  for resetting
+        localStorage.setItem("savedData", JSON.stringify(savedData));
+    
     };
+    console.log(savedData);
+    saveDisplay();
    
 };
-
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
 //The link should connect to titles page on either open library or the Marvel website
 function saveDisplay() {
-    var savedData = [];
-    savedData = JSON.parse(localStorage.getItem("savedData"));
-    console.log(savedData);
+    var savedData = JSON.parse(localStorage.getItem("savedData"));
+    if(!savedData) {
+        console.log("no data yet");
+    }
+    else {
+        var savedTitles = savedData[0];
+        var URLs = savedData[1];
+    };
+    // console.log(savedData);
+    // console.log(savedTitles);
+    // console.log(URLs);
+    
+    var newTitles = "";
+    newTitles = savedTitles.split(", ");
+    console.log(newTitles);
 
-    var titles = savedData[0];
-    var URLs = savedData[1];
-    console.log(titles);
-    console.log(URLs);
+    var newURLs = "";
+    newURLs = URLs.split(", ");
 
-    // savedItems.forEach(createItem);
+    // titles.forEach(createItem);
     // function createItem() {
     //     var savedBook = document.createElement('li');
     //     savedBook.textContent = savedItems.title; //want to get the title from the array object
