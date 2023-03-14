@@ -83,16 +83,20 @@ header form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: -20px;
+  /* margin-left: -20px; */
 }
 
 .saved-container ul {
+  margin-left: -20px;
+  margin-right: 5px;
+  flex-wrap:wrap;
   list-style-type: none;
+  justify-content: center;
 }
 
 .saved-container li {
+  margin-bottom: 5px;
   width:100%;
-  margin: 7px 0px 7px 0px;
 }
 
 .saved-card {
