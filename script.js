@@ -224,6 +224,7 @@ function saveDisplay() {
             var savedBook = document.createElement('a');
             savedBook.textContent = newTitles[i]; 
             savedBook.setAttribute('href', newURLs[i]);
+            savedBook.setAttribute('style', 'color: tan');
         
             console.log(newURLs[i]);
 
@@ -234,9 +235,10 @@ function saveDisplay() {
     
 };
 
+
 function clearSaveDisplay() {
-    while (savedTitlesEl.firstChild){
-        savedTitlesEl.removeChild (savedTitlesEl.firstChild)
+    while (savedTitlesEl.secondChild){
+        savedTitlesEl.removeChild (savedTitlesEl.secondChild)
     }
 };
 
