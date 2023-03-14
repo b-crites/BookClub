@@ -182,6 +182,8 @@ function saveTitle(e) { //for titles not marvel
 //Write a function that displays the save titles and links in our display section "saved-titles"
 //The link should connect to titles page on either open library or the Marvel website
 function saveDisplay() {
+    clearSaveDisplay();
+
     var savedData = JSON.parse(localStorage.getItem("savedData"));
     if(!savedData) {
         console.log("no data yet");
@@ -189,29 +191,33 @@ function saveDisplay() {
     else {
         var savedTitles = savedData[0];
         var URLs = savedData[1];
-    };
-    
-    var newTitles = "";
-    newTitles = savedTitles.split(", ");
-    var newURLs = "";
-    newURLs = URLs.split(", ");
+
+        var newTitles = "";
+        newTitles = savedTitles.split(", ");
+        var newURLs = "";
+        newURLs = URLs.split(", ");
 
    
     
-    for (i=0; i< newTitles.length; i++) {
-        var savedBookEl = document.createElement('li');
-        var savedBook = document.createElement('a');
-        savedBook.textContent = newTitles[i]; 
-        savedBook.setAttribute('href', newURLs[i]);
+        for (i=0; i< newTitles.length; i++) {
+            var savedBookEl = document.createElement('li');
+            var savedBook = document.createElement('a');
+            savedBook.textContent = newTitles[i]; 
+            savedBook.setAttribute('href', newURLs[i]);
         
-        console.log(newURLs[i]);
+            console.log(newURLs[i]);
 
-        savedBookEl.append(savedBook);
-        savedTitlesEl.append(savedBookEl);
-    }
-         
+            savedBookEl.append(savedBook);
+            savedTitlesEl.append(savedBookEl);
+        }
+    };
     
+};
 
+function clearSaveDisplay() {
+    while (savedTitlesEl.firstChild){
+        savedTitlesEl.removeChild (savedTitlesEl.firstChild)
+    }
 };
 
 //Write a function that clears the Search Display before each search
