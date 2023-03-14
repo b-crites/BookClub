@@ -61,7 +61,7 @@ function getApi(event) {
 
 };
 
-saveDisplay();
+
 searchButton.addEventListener('click', getApi);
 
 //A function that picks and displays the selected info in our ul element "title-display"
@@ -196,11 +196,22 @@ function saveDisplay() {
     var newURLs = "";
     newURLs = URLs.split(", ");
 
-    for(i = 0; i < newTitles.length; i++) {
-        var savedBook = document.createElement('li');
-        savedBook.textContent = newTitles[i];
-        savedTitlesEl.append(savedBook);
-    };
+   
+    
+    for (i=0; i< newTitles.length; i++) {
+        var savedBookEl = document.createElement('li');
+        var savedBook = document.createElement('a');
+        savedBook.textContent = newTitles[i]; 
+        savedBook.setAttribute('href', newURLs[i]);
+        
+        console.log(newURLs[i]);
+
+        savedBookEl.append(savedBook);
+        savedTitlesEl.append(savedBookEl);
+    }
+         
+    
+
 };
 
 //Write a function that clears the Search Display before each search
@@ -210,3 +221,4 @@ function clearDisplay(){
     }
 };
 
+saveDisplay();
