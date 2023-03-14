@@ -171,6 +171,7 @@ function saveMarvelDisplay() {
 
     var savedMarvel = JSON.parse(localStorage.getItem("savedMarvel"));
     console.log(savedMarvel);
+
     
 };
 
@@ -224,7 +225,7 @@ function saveDisplay() {
             var savedBook = document.createElement('a');
             savedBook.textContent = newTitles[i]; 
             savedBook.setAttribute('href', newURLs[i]);
-            savedBook.setAttribute('style', 'color: tan');
+            savedBook.setAttribute('style', 'color: black');
         
             console.log(newURLs[i]);
 
