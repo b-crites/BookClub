@@ -182,7 +182,6 @@ function saveTitle(e) { //for titles not marvel
         localStorage.setItem("savedData", JSON.stringify(savedData));
     
     };
-    console.log(savedData);
     saveDisplay();
    
 };
@@ -198,9 +197,6 @@ function saveDisplay() {
         var savedTitles = savedData[0];
         var URLs = savedData[1];
     };
-    // console.log(savedData);
-    // console.log(savedTitles);
-    // console.log(URLs);
     
     var newTitles = "";
     newTitles = savedTitles.split(", ");
@@ -208,6 +204,7 @@ function saveDisplay() {
 
     var newURLs = "";
     newURLs = URLs.split(", ");
+    console.log(newURLs);
 
     // titles.forEach(createItem);
     // function createItem() {
