@@ -194,7 +194,7 @@ function saveDisplay() {
     var newTitles = "";
     newTitles = savedTitles.split(", ");
     var newURLs = "";
-    newURLs = URLs.split(", ");
+    newURLs = newURLs.split(", ");
 
     for(i = 0; i < newTitles.length; i++) {
         var savedBook = document.createElement('li');
