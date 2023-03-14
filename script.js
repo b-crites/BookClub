@@ -142,8 +142,8 @@ function marvelDisplay(data){
     }
 };
 
-function saveMarvelTitle(e) {
-    var a = e.target;
+function saveMarvelTitle(marvelData) {
+    var a = marvelData.target;
     var title = a.getAttribute("title");
     var url = a.getAttribute("url");
     var savedMarvel = JSON.parse(localStorage.getItem("savedMarvel"));
@@ -160,7 +160,7 @@ function saveMarvelTitle(e) {
         savedMarvel[1] = savedMarvel[1] + url + "?! ";
         localStorage.setItem("savedMarvel", JSON.stringify(savedMarvel));
     };
-    saveMarvelDisplay();
+    saveMarvelDisplay(marvelData);
 };
 
 function saveMarvelDisplay() {
@@ -194,8 +194,8 @@ function saveMarvelDisplay() {
 };
 
 // A function that saves the name and a link to favorited titles -- for non Marvel titles
-function saveTitle(e) {
-    var a = e.target;
+function saveTitle(data) {
+    var a = data.target;
     var title = a.getAttribute("title");
     var url = a.getAttribute("url");
     var savedData = JSON.parse(localStorage.getItem("savedData"));
@@ -211,16 +211,23 @@ function saveTitle(e) {
         savedData[0] = savedData[0] + title + ", ";
         savedData[1] = savedData[1] + url + ", ";
         localStorage.setItem("savedData", JSON.stringify(savedData));
-    
     };
-    saveDisplay();
+    saveDisplay(data);
 };
 
-//Write a function that displays the save titles and links in our display section "saved-titles"
-function saveDisplay() {
+// In saveDisplay if/else statement to diferentiate between normal data vs marvel data
+// put all the information into for loop to create display
+// before run  -- clearDisplay
+
+// Write a function that displays the save titles and links in our display section "saved-titles"
+function saveDisplay(event) {
+    event.preventDefault();
+    console.log(event.target);
+
     clearSaveDisplay();
 
     var savedData = JSON.parse(localStorage.getItem("savedData"));
+
     if(!savedData) {
         console.log("no data yet");
         return
