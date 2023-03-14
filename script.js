@@ -182,7 +182,6 @@ function saveTitle(e) { //for titles not marvel
         localStorage.setItem("savedData", JSON.stringify(savedData));
     
     };
-    console.log(savedData);
     saveDisplay();
    
 };
@@ -198,9 +197,6 @@ function saveDisplay() {
         var savedTitles = savedData[0];
         var URLs = savedData[1];
     };
-    // console.log(savedData);
-    // console.log(savedTitles);
-    // console.log(URLs);
     
     var newTitles = "";
     newTitles = savedTitles.split(", ");
@@ -208,14 +204,14 @@ function saveDisplay() {
 
     var newURLs = "";
     newURLs = URLs.split(", ");
+    console.log(newURLs);
 
-    // titles.forEach(createItem);
-    // function createItem() {
-    //     var savedBook = document.createElement('li');
-    //     savedBook.textContent = savedItems.title; //want to get the title from the array object
-    //     savedBook.setAttribute('href', savedItems.url); //want to get the link from the array object
-    //     savedTitlesEl.append(savedItem);
-    // }
+    for(i = 0, j = 0; i < newTitles.length, j < newURLs.length; i++, j++) {
+        var savedBook = document.createElement('li');
+        savedBook.textContent = newTitles[i];
+        savedBook.setAttribute("href", newURLs[j]);
+        savedTitlesEl.append(savedBook);
+    };
 
 };
 
