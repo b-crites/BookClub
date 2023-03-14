@@ -188,13 +188,14 @@ function saveDisplay() {
     }
     else {
         var savedTitles = savedData[0];
-        var URLs = savedData[1];
+        var URLS = savedData[1];
     };
     
     var newTitles = "";
     newTitles = savedTitles.split(", ");
-    var newURLs = "";
-    newURLs = URLs.split(", ");
+    
+    var newURLS = "";
+    newURLS = URLS.split(", ");
 
     for(i = 0; i < newTitles.length; i++) {
         var savedBook = document.createElement('li');
