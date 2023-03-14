@@ -176,6 +176,7 @@ function saveTitle(e) { //for titles not marvel
     
     };
     saveDisplay();
+
    
 };
 
@@ -185,29 +186,30 @@ function saveDisplay() {
     var savedData = JSON.parse(localStorage.getItem("savedData"));
     if(!savedData) {
         console.log("no data yet");
+        return
     }
     else {
         var savedTitles = savedData[0];
-        var URLS = savedData[1];
-    };
-    
-    var newTitles = "";
-    newTitles = savedTitles.split(", ");
-    
-    var newURLS = "";
-    newURLS = URLS.split(", ");
+        var URLs = savedData[1];
 
-    for(i = 0; i < newTitles.length; i++) {
-        var savedBook = document.createElement('li');
-        savedBook.textContent = newTitles[i];
-        savedTitlesEl.append(savedBook);
+        var newTitles = "";
+        newTitles = savedTitles.split(", ");
+
+        var newURLData = "";
+        newURLData = URLs.split(", ");
+
+        for(i = 0; i < newTitles.length; i++) {
+            var savedBook = document.createElement('li');
+            savedBook.textContent = newTitles[i];
+            savedTitlesEl.append(savedBook);
+        };
     };
 };
 
 //Write a function that clears the Search Display before each search
 function clearDisplay(){
     while (displayCardEl.firstChild){
-        displayCardEl.removeChild (displayCardEl.firstChild)
-    }
+        displayCardEl.removeChild(displayCardEl.firstChild)
+    };
 };
 
