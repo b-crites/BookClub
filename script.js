@@ -168,9 +168,38 @@ function saveMarvelTitle(e) {
 
 function saveMarvelDisplay() {
     clearSaveDisplay();
-
+    
     var savedMarvel = JSON.parse(localStorage.getItem("savedMarvel"));
-    console.log(savedMarvel);
+    // console.log(savedMarvel);
+
+    if(!savedMarvel) {
+        console.log("no data yet");
+        return
+    };
+    // else {
+    //     var savedTitles = savedMarvel[0];
+    //     var URLs = savedMarvel[1];
+
+    //     var newTitles = "";
+    //     newTitles = savedTitles.split(", ");
+
+    //     var newURLs = "";
+    //     newURLs = URLs.split(", ");
+
+    //     for (i=0; i< newTitles.length; i++) {
+    //         var savedBookEl = document.createElement('li');
+    //         var savedBook = document.createElement('a');
+    //         savedBook.textContent = newTitles[i]; 
+    //         savedBook.setAttribute('href', newURLs[i]);
+    //         savedBook.setAttribute('style', 'color: tan');
+        
+    //         console.log(newURLs[i]);
+
+    //         savedBookEl.append(savedBook);
+    //         savedTitlesEl.append(savedBookEl);
+    //     };
+
+    // };
     
 };
 
@@ -217,7 +246,6 @@ function saveDisplay() {
 
         var newURLs = "";
         newURLs = URLs.split(", ");
-
     
         for (i=0; i< newTitles.length; i++) {
             var savedBookEl = document.createElement('li');
@@ -239,7 +267,7 @@ function saveDisplay() {
 function clearSaveDisplay() {
     while (savedTitlesEl.secondChild){
         savedTitlesEl.removeChild (savedTitlesEl.secondChild)
-    }
+    };
 };
 
 //Write a function that clears the Search Display before each search
@@ -249,4 +277,5 @@ function clearDisplay(){
     };
 };
 
+saveMarvelDisplay();
 saveDisplay();
