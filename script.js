@@ -185,8 +185,8 @@ function saveMarvelDisplay() {
             var savedBookEl = document.createElement('li');
             var savedBook = document.createElement('a');
             savedBook.textContent = newTitles[i]; 
+            savedBook.classList.add("saved-card");
             savedBook.setAttribute('href', newURLs[i]);
-            savedBook.setAttribute('style', 'color: tan');
             savedBookEl.append(savedBook);
             savedTitlesEl.append(savedBookEl);
         };
@@ -239,8 +239,8 @@ function saveDisplay() {
             var savedBookEl = document.createElement('li');
             var savedBook = document.createElement('a');
             savedBook.textContent = newTitles[i]; 
+            savedBook.classList.add("saved-card");
             savedBook.setAttribute('href', newURLs[i]);
-            savedBook.setAttribute('style', 'color: tan');
             savedBookEl.append(savedBook);
             savedTitlesEl.append(savedBookEl);
         };
