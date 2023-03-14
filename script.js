@@ -88,7 +88,7 @@ function searchDisplay(data) {
 
     saveButton = document.createElement('button');
     saveButton.classList.add('save-button');
-    saveButton.innerText= 'Save';
+    saveButton.innerText = 'Save';
     saveButton.setAttribute("url", book.url);
     saveButton.setAttribute("title", book.title);
 
@@ -102,29 +102,18 @@ function searchDisplay(data) {
     saveButton.addEventListener('click', e=> {
         console.log(e);
         saveTitle(e);
-        //console.log(data)
     });
-    
-
 };
 
 function marvelDisplay(data){
-    var comics= data.data.results;
-    for(i=0;i<10;++i) {
-        
-        var creators= comics[i].creators.items[0].name;
-
-
+    var comics = data.data.results;
+    for(i = 0; i < comics.length, i < 10; i++) {
+        var creators = comics[i].creators.items[0].name;
         var comicTitles = comics[i].title;
-
-
         var anchorEl = document.createElement('a');
         anchorEl.setAttribute('href',comics[i].urls[0].url);
-        // console.log(comics[i].urls[0].url);
 
-        var comicImages=comics[i].thumbnail.path +'.jpg';
-
-
+        var comicImages = comics[i].thumbnail.path +'.jpg';
         var displayCard = document.createElement('li');
         displayCard.classList.add('display-card');
 
@@ -140,18 +129,49 @@ function marvelDisplay(data){
         displayBody.innerHTML = '<br/>' + 'Creator:' + creators;
 
         var saveButton = document.createElement('button');
-            saveButton.classList.add('save-button');
-            saveButton.innerText= 'Save';
+        saveButton.classList.add('save-button');
+        saveButton.innerText = 'Save';
+        saveButton.setAttribute("url", comics[i].urls[0].url);
+        saveButton.setAttribute("title", comics[i].title);
+
         anchorEl.append(bookImage);
         displayCard.append(displayTitle, anchorEl , displayBody, saveButton );
         displayCardEl.append(displayCard);
 
         saveButton.addEventListener('click', e=> {
             console.log(e);
-            saveTitle(e);
+            saveMarvelTitle(e);
         });
     }
+};
 
+function saveMarvelTitle(e) {
+    var a = e.target;
+    var title = a.getAttribute("title");
+    var url = a.getAttribute("url");
+    var savedMarvel = JSON.parse(localStorage.getItem("savedMarvel"));
+
+    if(!savedMarvel) {
+        var saveMarvel = {};
+        saveMarvel[0] = title + ", ";
+        saveMarvel[1] = url + ", ";
+        localStorage.setItem("savedMarvel", JSON.stringify(saveMarvel));
+
+    }
+    else {
+        savedMarvel[0] = savedMarvel[0] + title + ", ";
+        savedMarvel[1] = savedMarvel[1] + url + ", ";
+        localStorage.setItem("savedMarvel", JSON.stringify(savedMarvel));
+    };
+    saveMarvelDisplay();
+};
+
+function saveMarvelDisplay() {
+    clearSaveDisplay();
+
+    var savedMarvel = JSON.parse(localStorage.getItem("savedMarvel"));
+    console.log(savedMarvel);
+    
 };
 
 //a function that saves the name and a link to favorited titles
@@ -176,7 +196,6 @@ function saveTitle(e) { //for titles not marvel
     
     };
     saveDisplay();
-   
 };
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
@@ -187,6 +206,7 @@ function saveDisplay() {
     var savedData = JSON.parse(localStorage.getItem("savedData"));
     if(!savedData) {
         console.log("no data yet");
+        return
     }
     else {
         var savedTitles = savedData[0];
@@ -194,10 +214,10 @@ function saveDisplay() {
 
         var newTitles = "";
         newTitles = savedTitles.split(", ");
+
         var newURLs = "";
         newURLs = URLs.split(", ");
 
-   
     
         for (i=0; i< newTitles.length; i++) {
             var savedBookEl = document.createElement('li');
@@ -225,8 +245,8 @@ function clearSaveDisplay() {
 //Write a function that clears the Search Display before each search
 function clearDisplay(){
     while (displayCardEl.firstChild){
-        displayCardEl.removeChild (displayCardEl.firstChild)
-    }
+        displayCardEl.removeChild(displayCardEl.firstChild)
+    };
 };
 
 saveDisplay();
