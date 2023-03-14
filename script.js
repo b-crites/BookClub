@@ -266,7 +266,7 @@ function saveDisplay() {
 
 function clearSaveDisplay() {
     while (savedTitlesEl.firstChild){
-        savedTitlesEl.removeChild (savedTitlesEl.firstChild)
+        savedTitlesEl.removeChild(savedTitlesEl.firstChild)
     };
 };
 
