@@ -1,4 +1,3 @@
-/* color vars to use*/
 :root {
     --primary: tan;
     --secondary: rgba(75,182,239,1);
@@ -9,12 +8,12 @@
     --textColor: #ffe599;
     --textBox: #764500;
     --lightBox: rgba(241,235,156);
+    --brightYellow: rgb(231, 222, 96);
+    --superYellow: rgb(221, 209, 38);
 }
-/* hi */
-/* hi */
+
 body {
   background-color: var(--secondary);
-
 }
 
 header {
@@ -49,16 +48,18 @@ header form {
 }
 
 .search-btn:hover {
-  opacity:75%;
+  transition: 0.5s;
+  background-color: var(--superYellow);
+  box-shadow: 0 1px 4px var(--superYellow);
 }
 
 .container {
-  display:flex;
+  display: flex;
+  flex-wrap: nowrap;
   background-color: var(--lightBox);
   margin-top: 10px;
   border-radius:8px;
   padding: 10px;
-  flex-wrap:wrap;
   justify-content: space-evenly;
   min-height: 350px;
   max-height:75%;
@@ -67,9 +68,10 @@ header form {
 .savedItemsResults {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  flex: 1 1 auto;
+  align-items:flex-start;
   min-width: 25%;
-  max-width: 33%;
+  max-width: 30%;
   border: 1px solid gray;
   background-color: var(--textBox);
   color: var(--textColor);
@@ -89,6 +91,7 @@ header form {
 }
 
 .saved-container li {
+  width:100%;
   margin: 7px 0px 7px 0px;
 }
 
@@ -98,26 +101,69 @@ header form {
   text-decoration: none;
   color: #000000;
   font-size: 18px;
+  height: 25px;
+  padding: 5px;
 }
 
-.saved-card:hover {
-  color:red;
+.saved-book {
+  background-color: var(--secondary);
+  border-radius: 2px;
+  text-decoration: none;
+  color: #000000;
+  font-size: 18px;
+}
+
+.saved-book:hover {
+  transition: 0.5s;
+  background-color: var(--brightYellow);
+  box-shadow: 0 1px 12px var(--superYellow);
 }
 
 .searchedItemsResults {
-  display:flex;
-  flex-wrap:wrap;
+  display: flex;
+  flex-wrap: wrap;
   flex: 1 1 auto;
   min-width: 65%;
-  max-width: 75%;
+  max-width: 70%;
   background-color: var(--textBox);
-  color: var(--textColor);
   border-radius: 5px;
+  color:#000000;
+}
+
+.display-container {
+  display:flex;
+}
+
+.title-display {
+  list-style-type: none;
+  margin-left: -30px;
+  margin-right: 10px;
 }
 
 .display-card {
+  flex-wrap:wrap;
+  flex: 1 1 auto;
   background-color: var(--secondary);
-  padding: 5px;
   border-radius: 2px;
-  margin: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.book-img {
+  height: 150px;
+  width: 115px;
+  max-height: 25%;
+}
+
+.save-button {
+  margin-top: 5px;
+  height: 25px;
+  width: 50px;
+  background-color: var(--lightBox);
+}
+
+.save-button:hover {
+  transition: 0.5s;
+  background-color: var(--superYellow);
+  box-shadow: 0 1px 4px var(--superYellow);
 }

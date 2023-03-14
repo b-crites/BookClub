@@ -28,7 +28,6 @@ function getApi(event) {
                 marvelDisplay(data);
             });
     }
-
     else {
         fetch(openLibraryURL + "/subjects/" + genreInput + '.json', {
             // mode: 'no-cors'
@@ -71,7 +70,6 @@ function getApi(event) {
             })
         })
     }
-
 };
 
 //A function that picks and displays the selected info in our ul element "title-display"
@@ -176,7 +174,7 @@ function saveMarvelTitle(marvelData) {
 };
 
 function saveMarvelDisplay() {
-    //clearSaveDisplay();
+    // clearSaveDisplay();
     var savedMarvel = JSON.parse(localStorage.getItem("savedMarvel"));
 
     if(!savedMarvel) {
@@ -197,7 +195,7 @@ function saveMarvelDisplay() {
             var savedBookEl = document.createElement('li');
             var savedBook = document.createElement('a');
             savedBook.textContent = newTitles[i]; 
-            savedBook.classList.add("saved-card");
+            savedBook.classList.add("saved-book");
             savedBook.setAttribute('href', newURLs[i]);
             savedBookEl.append(savedBook);
             savedTitlesEl.append(savedBookEl);
@@ -233,7 +231,7 @@ function saveTitle(data) {
 
 // Write a function that displays the save titles and links in our display section "saved-titles"
 function saveDisplay() {
-    //clearSaveDisplay();
+    // clearSaveDisplay();
 
     var savedData = JSON.parse(localStorage.getItem("savedData"));
 
@@ -251,11 +249,11 @@ function saveDisplay() {
         var newURLs = "";
         newURLs = URLs.split(", ");
     
-        for (i=0; i< newTitles.length; i++) {
+        for (i = 0; i < newTitles.length; i++) {
             var savedBookEl = document.createElement('li');
             var savedBook = document.createElement('a');
             savedBook.textContent = newTitles[i]; 
-            savedBook.classList.add("saved-card");
+            savedBook.classList.add("saved-book");
             savedBook.setAttribute('href', newURLs[i]);
             savedBookEl.append(savedBook);
             savedTitlesEl.append(savedBookEl);
@@ -271,12 +269,21 @@ function saveDisplayAll() {
     saveDisplay();
 }
 
+function saveDisplayAll() {
+    clearSaveDisplay();
+
+    saveMarvelDisplay();
+    saveDisplay();
+}
+
+// THIS FUNCTION REMOVES DUPLICATES
 function clearSaveDisplay() {
-    while (savedTitlesEl.firstChild){
-        savedTitlesEl.removeChild(savedTitlesEl.firstChild)
+    while (savedTitlesEl.firstChild()) {
+        savedTitlesEl.removeChild(savedTitlesEl.firstChild);
     };
 };
 
+// DONT PAY ATTENTION TO THIS
 //A function that clears the Search Display before each search
 function clearDisplay(){
     while (displayCardEl.firstChild){
