@@ -72,7 +72,7 @@ function searchDisplay(data) {
     var image = book.cover;
 
     console.log(authors[0].name);
-    var anchorEl =document.createElement('a');
+    var anchorEl = document.createElement('a');
     anchorEl.setAttribute('href',book.url);
 
     var bookImage = document.createElement('img');
@@ -149,8 +149,6 @@ function marvelDisplay(data){
         saveButton.addEventListener('click', e=> {
             console.log(e);
             saveTitle(e);
-            // saveDisplay();
-            //console.log(data);
         });
     }
 
@@ -162,27 +160,21 @@ function saveTitle(e) { //for titles not marvel
     var a = e.target;
     var title = a.getAttribute("title");
     var url = a.getAttribute("url");
-    // console.log(url);
-    // console.log(title);
     var savedData = JSON.parse(localStorage.getItem("savedData"));
+
     if(!savedData) {
         var saveData = {};
         saveData[0] = title + ", ";
-        // console.log(saveData[0]);
         saveData[1] = url + ", ";
-        // console.log(saveData[1]);
-        // console.log(saveData);
         localStorage.setItem("savedData", JSON.stringify(saveData));
 
     }
     else {
         savedData[0] = savedData[0] + title + ", ";
         savedData[1] = savedData[1] + url + ", ";
-
         localStorage.setItem("savedData", JSON.stringify(savedData));
     
     };
-    console.log(savedData);
     saveDisplay();
    
 };
@@ -198,14 +190,9 @@ function saveDisplay() {
         var savedTitles = savedData[0];
         var URLs = savedData[1];
     };
-    // console.log(savedData);
-    // console.log(savedTitles);
-    // console.log(URLs);
     
     var newTitles = "";
     newTitles = savedTitles.split(", ");
-    console.log(newTitles);
-
     var newURLs = "";
     newURLs = URLs.split(", ");
 
