@@ -12,6 +12,7 @@ function getApi(event) {
     event.preventDefault();
     clearDisplay();
     worksArray = [];
+   
     var genreInput = document.getElementById('genreInput').value.toLowerCase().split(' ').join('_');
     console.log(genreInput);
     if (genreInput === 'marvel') {
@@ -29,18 +30,28 @@ function getApi(event) {
     }
 
     else {
-        fetch(openLibraryURL + "/subjects/" + genreInput + '.json' + '?per_page=10', {
+        fetch(openLibraryURL + "/subjects/" + genreInput + '.json', {
             // mode: 'no-cors'
         })
             .then(function (response) {
                 return response.json();
             })
+            .then(function (response){
+                let random =Math.random();
+                let randomNumber= Math.floor(random*(response.work_count-5)) +1
+                console.log(randomNumber)
+                fetch(openLibraryURL + "/subjects/" + genreInput + '.json'  + '?limit=5&offset=' + randomNumber)
+
+            .then(function(data){
+                return data.json()
+            })
+
             .then(function (data) {
                 console.log(data);
                 for (var i = 0; i < data.works.length; i++) {
                     worksArray.push(data.works[i])
                 }
-                console.log(worksArray);
+                
             })
             .then(function () {
                 for (var i = 0; i < worksArray.length; i++) {
@@ -58,6 +69,7 @@ function getApi(event) {
                 };
 
             })
+        })
     }
 
 };
