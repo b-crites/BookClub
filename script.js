@@ -1,17 +1,18 @@
-console.log('Link test')
-var displayCardEl = document.getElementById('title-display')
-var savedTitlesEl = document.getElementById('saved-titles')
-var searchButton = document.getElementById('searchButton')
-var openLibraryURL = 'https://openlibrary.org'
-var worksArray = []
-var saveButton = ""
-var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf"
+console.log('Link test');
+// localStorage.clear();
+var displayCardEl = document.getElementById('title-display');
+var savedTitlesEl = document.getElementById('saved-titles');
+var searchButton = document.getElementById('searchButton');
+var openLibraryURL = 'https://openlibrary.org';
+var worksArray = [];
+var saveButton = "";
+var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf";
 function getApi(event) {
-    event.preventDefault()
-    clearDisplay()
-    worksArray = []
-    var genreInput = document.getElementById('genreInput').value.toLowerCase().split(' ').join('_')
-    console.log(genreInput)
+    event.preventDefault();
+    clearDisplay();
+    worksArray = [];
+    var genreInput = document.getElementById('genreInput').value.toLowerCase().split(' ').join('_');
+    console.log(genreInput);
     if (genreInput === 'marvel') {
         fetch(marvelURL//,{
             // method: 'no-cors'
@@ -21,10 +22,9 @@ function getApi(event) {
                 return response.json();
             })
             .then(function (data) {
-                
-                console.log(data.data.results)
-                marvelDisplay(data)
-            })
+                console.log(data.data.results);
+                marvelDisplay(data);
+            });
     }
 
     else {
@@ -35,32 +35,33 @@ function getApi(event) {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data)
+                console.log(data);
                 for (var i = 0; i < data.works.length; i++) {
                     worksArray.push(data.works[i])
                 }
-                //console.log(worksArray)
+                console.log(worksArray);
             })
             .then(function () {
                 for (var i = 0; i < worksArray.length; i++) {
-                    console.log(worksArray[i].key)
-                    fetch(openLibraryURL + '/api/books?bibkeys=OLID:' + worksArray[i].cover_edition_key + '&jscmd=data' + '&format=json', {
-                        // mode: 'no-cors'
-                    })
+                    console.log(worksArray[i].key);
+                    fetch(openLibraryURL + '/api/books?bibkeys=OLID:' + worksArray[i].cover_edition_key + '&jscmd=data' + '&format=json')
+                        //mode: 'no-cors'
                         .then(function (response) {
                             return response.json();
                         })
                         .then(function (data) {
-                            //console.log(data)
-                            searchDisplay(data)
+                            console.log(data);
+                            searchDisplay(data);
                         })
 
-                }
+                };
 
             })
     }
 
-}
+};
+
+saveDisplay();
 searchButton.addEventListener('click', getApi);
 
 //A function that picks and displays the selected info in our ul element "title-display"
@@ -99,13 +100,13 @@ function searchDisplay(data) {
     
 
     saveButton.addEventListener('click', e=> {
-        //console.log(e)
+        console.log(e);
         saveTitle(e);
         //console.log(data)
     });
     
 
-}
+};
 
 function marvelDisplay(data){
     var comics= data.data.results;
@@ -119,7 +120,7 @@ function marvelDisplay(data){
 
         var anchorEl = document.createElement('a');
         anchorEl.setAttribute('href',comics[i].urls[0].url);
-        console.log(comics[i].urls[0].url);
+        // console.log(comics[i].urls[0].url);
 
         var comicImages=comics[i].thumbnail.path +'.jpg';
 
@@ -147,42 +148,74 @@ function marvelDisplay(data){
 
         saveButton.addEventListener('click', e=> {
             console.log(e);
-            saveTitle(data);
-            console.log(data);
+            saveTitle(e);
+            // saveDisplay();
+            //console.log(data);
         });
     }
 
 };
 
-//Write a function that saves the name and a link to favorited titles
+//a function that saves the name and a link to favorited titles
 //The link should connect to titles page on either open library or the Marvel website
 function saveTitle(e) { //for titles not marvel
     var a = e.target;
     var title = a.getAttribute("title");
     var url = a.getAttribute("url");
-    console.log(url);
-    console.log(title);
-    //localStorage.setIItem("savedItems", JSON.stringify(localSaved));
+    // console.log(url);
+    // console.log(title);
+    var savedData = JSON.parse(localStorage.getItem("savedData"));
+    if(!savedData) {
+        var saveData = {};
+        saveData[0] = title + ", ";
+        // console.log(saveData[0]);
+        saveData[1] = url + ", ";
+        // console.log(saveData[1]);
+        // console.log(saveData);
+        localStorage.setItem("savedData", JSON.stringify(saveData));
+
+    }
+    else {
+        savedData[0] = savedData[0] + title + ", ";
+        savedData[1] = savedData[1] + url + ", ";
+
+        localStorage.setItem("savedData", JSON.stringify(savedData));
     
+    };
+    console.log(savedData);
+    saveDisplay();
+   
 };
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
 //The link should connect to titles page on either open library or the Marvel website
 function saveDisplay() {
-
-    var savedSearches = JSON.parse(localStorage.getItem('savedItems'));
-    console.log(savedSearches);
-
-    savedSearches.forEach(createItem);
-
-    function createItem() {
-        var savedItem = document.createElement('li');
-        savedItem.textContent = savedSearches.title; //want to get the title from the array object
-        savedItem.setAttribute('href', savedSearches.link); //want to get the link from the array object
-
-        savedTitlesEl.append(savedItem);
-
+    var savedData = JSON.parse(localStorage.getItem("savedData"));
+    if(!savedData) {
+        console.log("no data yet");
     }
+    else {
+        var savedTitles = savedData[0];
+        var URLs = savedData[1];
+    };
+    // console.log(savedData);
+    // console.log(savedTitles);
+    // console.log(URLs);
+    
+    var newTitles = "";
+    newTitles = savedTitles.split(", ");
+    console.log(newTitles);
+
+    var newURLs = "";
+    newURLs = URLs.split(", ");
+
+    // titles.forEach(createItem);
+    // function createItem() {
+    //     var savedBook = document.createElement('li');
+    //     savedBook.textContent = savedItems.title; //want to get the title from the array object
+    //     savedBook.setAttribute('href', savedItems.url); //want to get the link from the array object
+    //     savedTitlesEl.append(savedItem);
+    // }
 
 };
 
