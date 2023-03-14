@@ -172,7 +172,7 @@ function saveMarvelTitle(marvelData) {
         savedMarvel[1] = savedMarvel[1] + url + "?! ";
         localStorage.setItem("savedMarvel", JSON.stringify(savedMarvel));
     };
-    saveMarvelDisplay(marvelData);
+    saveDisplayAll(marvelData);
 };
 
 function saveMarvelDisplay() {
@@ -224,7 +224,7 @@ function saveTitle(data) {
         savedData[1] = savedData[1] + url + ", ";
         localStorage.setItem("savedData", JSON.stringify(savedData));
     };
-    saveDisplay(data);
+    saveDisplayAll(data);
 };
 
 // In saveDisplay if/else statement to diferentiate between normal data vs marvel data
@@ -233,7 +233,7 @@ function saveTitle(data) {
 
 // Write a function that displays the save titles and links in our display section "saved-titles"
 function saveDisplay() {
-    clearSaveDisplay();
+    //clearSaveDisplay();
 
     var savedData = JSON.parse(localStorage.getItem("savedData"));
 
@@ -264,6 +264,13 @@ function saveDisplay() {
     
 };
 
+function saveDisplayAll() {
+    clearSaveDisplay();
+
+    saveMarvelDisplay();
+    saveDisplay();
+}
+
 function clearSaveDisplay() {
     while (savedTitlesEl.firstChild){
         savedTitlesEl.removeChild(savedTitlesEl.firstChild)
@@ -278,5 +285,6 @@ function clearDisplay(){
 };
 
 searchButton.addEventListener('click', getApi);
-saveMarvelDisplay();
-saveDisplay();
+//saveMarvelDisplay();
+//saveDisplay();
+saveDisplayAll();
