@@ -86,11 +86,9 @@ header form {
 }
 
 .saved-container ul {
-  margin-left: -20px;
+  margin-left: -30px;
   margin-right: 5px;
-  flex-wrap:wrap;
   list-style-type: none;
-  justify-content: center;
 }
 
 .saved-container li {
@@ -126,8 +124,8 @@ header form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  min-width: 65%;
-  max-width: 70%;
+  min-width: 75%;
+  max-width: 95%;
   background-color: var(--textBox);
   border-radius: 5px;
   color:#000000;
@@ -137,9 +135,13 @@ header form {
   list-style-type: none;
   margin-left: -30px;
   margin-right: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .display-card {
+  justify-content: center;
   background-color: var(--secondary);
   border-radius: 2px;
   padding: 5px;
