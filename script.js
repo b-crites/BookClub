@@ -7,6 +7,7 @@ var openLibraryURL = 'https://openlibrary.org';
 var worksArray = [];
 var saveButton = "";
 var marvelURL = "https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&apikey=ee2ad0bf7d1f2170031816014df5a8bf";
+
 function getApi(event) {
     event.preventDefault();
     clearDisplay();
@@ -22,7 +23,7 @@ function getApi(event) {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data.data.results);
+                // console.log(data.data.results);
                 marvelDisplay(data);
             });
     }
@@ -61,11 +62,7 @@ function getApi(event) {
 
 };
 
-
-searchButton.addEventListener('click', getApi);
-
 //A function that picks and displays the selected info in our ul element "title-display"
-//List items need a card style display, Title, Description, and save button element (images if possible)
 function searchDisplay(data) {
     var book = Object.values(data)[0];
     var authors = book.authors;
@@ -153,14 +150,14 @@ function saveMarvelTitle(e) {
 
     if(!savedMarvel) {
         var saveMarvel = {};
-        saveMarvel[0] = title + ", ";
-        saveMarvel[1] = url + ", ";
+        saveMarvel[0] = title + "?! ";
+        saveMarvel[1] = url + "?! ";
         localStorage.setItem("savedMarvel", JSON.stringify(saveMarvel));
 
     }
     else {
-        savedMarvel[0] = savedMarvel[0] + title + ", ";
-        savedMarvel[1] = savedMarvel[1] + url + ", ";
+        savedMarvel[0] = savedMarvel[0] + title + "?! ";
+        savedMarvel[1] = savedMarvel[1] + url + "?! ";
         localStorage.setItem("savedMarvel", JSON.stringify(savedMarvel));
     };
     saveMarvelDisplay();
@@ -168,16 +165,36 @@ function saveMarvelTitle(e) {
 
 function saveMarvelDisplay() {
     clearSaveDisplay();
-
     var savedMarvel = JSON.parse(localStorage.getItem("savedMarvel"));
-    console.log(savedMarvel);
 
-    
+    if(!savedMarvel) {
+        console.log("no data yet");
+        return
+    }
+    else {
+        var savedTitles = savedMarvel[0];
+        var URLs = savedMarvel[1];
+
+        var newTitles = "";
+        newTitles = savedTitles.split("?! ");
+
+        var newURLs = "";
+        newURLs = URLs.split("?! ");
+
+        for (i = 0; i < newTitles.length; i++) {
+            var savedBookEl = document.createElement('li');
+            var savedBook = document.createElement('a');
+            savedBook.textContent = newTitles[i]; 
+            savedBook.setAttribute('href', newURLs[i]);
+            savedBook.setAttribute('style', 'color: tan');
+            savedBookEl.append(savedBook);
+            savedTitlesEl.append(savedBookEl);
+        };
+    };
 };
 
-//a function that saves the name and a link to favorited titles
-//The link should connect to titles page on either open library or the Marvel website
-function saveTitle(e) { //for titles not marvel
+// A function that saves the name and a link to favorited titles -- for non Marvel titles
+function saveTitle(e) {
     var a = e.target;
     var title = a.getAttribute("title");
     var url = a.getAttribute("url");
@@ -200,7 +217,6 @@ function saveTitle(e) { //for titles not marvel
 };
 
 //Write a function that displays the save titles and links in our display section "saved-titles"
-//The link should connect to titles page on either open library or the Marvel website
 function saveDisplay() {
     clearSaveDisplay();
 
@@ -218,36 +234,33 @@ function saveDisplay() {
 
         var newURLs = "";
         newURLs = URLs.split(", ");
-
     
         for (i=0; i< newTitles.length; i++) {
             var savedBookEl = document.createElement('li');
             var savedBook = document.createElement('a');
             savedBook.textContent = newTitles[i]; 
             savedBook.setAttribute('href', newURLs[i]);
-            savedBook.setAttribute('style', 'color: black');
-        
-            console.log(newURLs[i]);
-
+            savedBook.setAttribute('style', 'color: tan');
             savedBookEl.append(savedBook);
             savedTitlesEl.append(savedBookEl);
-        }
+        };
     };
     
 };
 
-
 function clearSaveDisplay() {
     while (savedTitlesEl.secondChild){
         savedTitlesEl.removeChild (savedTitlesEl.secondChild)
-    }
+    };
 };
 
-//Write a function that clears the Search Display before each search
+//A function that clears the Search Display before each search
 function clearDisplay(){
     while (displayCardEl.firstChild){
         displayCardEl.removeChild(displayCardEl.firstChild)
     };
 };
 
+searchButton.addEventListener('click', getApi);
+saveMarvelDisplay();
 saveDisplay();
