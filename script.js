@@ -212,7 +212,7 @@ function saveTitle(data) {
         savedData[1] = savedData[1] + url + ", ";
         localStorage.setItem("savedData", JSON.stringify(savedData));
     };
-    saveDisplay(e);
+    saveDisplay(data);
 };
 
 // In saveDisplay if/else statement to diferentiate between normal data vs marvel data
