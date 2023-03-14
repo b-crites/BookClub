@@ -224,7 +224,7 @@ function saveTitle(data) {
         savedData[1] = savedData[1] + url + ", ";
         localStorage.setItem("savedData", JSON.stringify(savedData));
     };
-    saveDisplay(data);
+    saveDisplay(e);
 };
 
 // In saveDisplay if/else statement to diferentiate between normal data vs marvel data
@@ -232,10 +232,7 @@ function saveTitle(data) {
 // before run  -- clearDisplay
 
 // Write a function that displays the save titles and links in our display section "saved-titles"
-function saveDisplay(event) {
-    event.preventDefault();
-    console.log(event.target);
-
+function saveDisplay() {
     clearSaveDisplay();
 
     var savedData = JSON.parse(localStorage.getItem("savedData"));
