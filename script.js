@@ -61,7 +61,7 @@ function getApi(event) {
 
 };
 
-saveDisplay();
+
 searchButton.addEventListener('click', getApi);
 
 //A function that picks and displays the selected info in our ul element "title-display"
@@ -183,6 +183,8 @@ function saveTitle(e) { //for titles not marvel
 //Write a function that displays the save titles and links in our display section "saved-titles"
 //The link should connect to titles page on either open library or the Marvel website
 function saveDisplay() {
+    clearSaveDisplay();
+
     var savedData = JSON.parse(localStorage.getItem("savedData"));
     if(!savedData) {
         console.log("no data yet");
@@ -197,13 +199,26 @@ function saveDisplay() {
 
         var newURLData = "";
         newURLData = URLs.split(", ");
+    
+        for (i=0; i< newTitles.length; i++) {
+            var savedBookEl = document.createElement('li');
+            var savedBook = document.createElement('a');
+            savedBook.textContent = newTitles[i]; 
+            savedBook.setAttribute('href', newURLs[i]);
+        
+            console.log(newURLs[i]);
 
-        for(i = 0; i < newTitles.length; i++) {
-            var savedBook = document.createElement('li');
-            savedBook.textContent = newTitles[i];
-            savedTitlesEl.append(savedBook);
-        };
+            savedBookEl.append(savedBook);
+            savedTitlesEl.append(savedBookEl);
+        }
     };
+    
+};
+
+function clearSaveDisplay() {
+    while (savedTitlesEl.firstChild){
+        savedTitlesEl.removeChild (savedTitlesEl.firstChild)
+    }
 };
 
 //Write a function that clears the Search Display before each search
@@ -213,3 +228,4 @@ function clearDisplay(){
     };
 };
 
+saveDisplay();
