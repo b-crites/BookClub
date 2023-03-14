@@ -170,6 +170,7 @@ function saveMarvelTitle(marvelData) {
         savedMarvel[1] = savedMarvel[1] + url + "?! ";
         localStorage.setItem("savedMarvel", JSON.stringify(savedMarvel));
     };
+    //saveMarvelDisplay(marvelData);
     saveDisplayAll(marvelData);
 };
 
@@ -222,6 +223,7 @@ function saveTitle(data) {
         savedData[1] = savedData[1] + url + ", ";
         localStorage.setItem("savedData", JSON.stringify(savedData));
     };
+    //saveDisplay(data);
     saveDisplayAll(data);
 };
 
@@ -269,16 +271,10 @@ function saveDisplayAll() {
     saveDisplay();
 }
 
-function saveDisplayAll() {
-    clearSaveDisplay();
-
-    saveMarvelDisplay();
-    saveDisplay();
-}
 
 // THIS FUNCTION REMOVES DUPLICATES
 function clearSaveDisplay() {
-    while (savedTitlesEl.firstChild()) {
+    while (savedTitlesEl.firstChild) {
         savedTitlesEl.removeChild(savedTitlesEl.firstChild);
     };
 };
