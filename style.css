@@ -12,7 +12,7 @@
 }
 /* hi */
 /* hi */
-body{
+body {
   background-color: var(--secondary);
 
 }
@@ -98,6 +98,10 @@ header form {
   text-decoration: none;
   color: #000000;
   font-size: 18px;
+}
+
+.saved-card:hover {
+  color:red;
 }
 
 .searchedItemsResults {
