@@ -17,13 +17,15 @@ body {
 }
 
 header {
-  display: flex;
   background-color: var(--lightBox);
   padding: 5px 10px 5px 10px;
-  justify-content: space-evenly;
-  flex-wrap:wrap;
   color: var(--textColor);
   border-radius: 8px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap:wrap;
+  align-content: center;
+  align-items: center;
 }
 
 header div {
@@ -39,8 +41,8 @@ header h1 {
 
 header form {
   background-color: var(--textBox);
-  padding:10px;
-  border-radius:8px;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .search-btn {
@@ -61,8 +63,6 @@ header form {
   border-radius:8px;
   padding: 10px;
   justify-content: space-evenly;
-  min-height: 350px;
-  max-height:75%;
 }
 
 .savedItemsResults {
@@ -83,7 +83,6 @@ header form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* margin-left: -20px; */
 }
 
 .saved-container ul {
@@ -126,16 +125,12 @@ header form {
 .searchedItemsResults {
   display: flex;
   flex-wrap: wrap;
-  flex: 1 1 auto;
+  justify-content: center;
   min-width: 65%;
   max-width: 70%;
   background-color: var(--textBox);
   border-radius: 5px;
   color:#000000;
-}
-
-.display-container {
-  display:flex;
 }
 
 .title-display {
@@ -145,8 +140,6 @@ header form {
 }
 
 .display-card {
-  flex-wrap:wrap;
-  flex: 1 1 auto;
   background-color: var(--secondary);
   border-radius: 2px;
   padding: 5px;
@@ -156,7 +149,6 @@ header form {
 .book-img {
   height: 150px;
   width: 115px;
-  max-height: 25%;
 }
 
 .save-button {
