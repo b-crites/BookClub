@@ -1,5 +1,5 @@
 console.log('Link test');
-localStorage.clear();
+//localStorage.clear();
 var displayCardEl = document.getElementById('title-display');
 var savedTitlesEl = document.getElementById('saved-titles');
 var searchButton = document.getElementById('searchButton');
